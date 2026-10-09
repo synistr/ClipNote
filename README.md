@@ -1,31 +1,24 @@
-# CBNote
+# ClipNote
 
-Replace Camera Control with Note app.
+A note app that watches your clipboard. Based on [CBNote](https://github.com/Cizzuk/CBNote) by Cizzuk, with background clipboard monitoring from [Clip](https://github.com/rileytestut/Clip) by Riley Testut.
 
-This is a simple note app linked with the file system. You can quickly check and edit your notes using the device's buttons or shortcuts.
+## Clipboard monitoring
 
-**[Download on the App Store](https://apps.apple.com/app/cbnote/id6756120567)**
+ClipNote keeps running in the background and posts a notification whenever the clipboard changes. Tapping the notification opens ClipNote and saves the clipboard as a new note.
 
-**[AltStore PAL Source](https://i.cizzuk.net/altstore/)**
+- Background location updates (approximate, never stored) keep the app alive. Grant location access "Always".
+- A private Pasteboard API delivers clipboard change events while the app is in the background, so this can't ship on the App Store.
+- If iOS suspends or kills ClipNote, an "App Stopped Running" notification asks you to reopen it.
+- To skip the paste prompt on every save, set Settings > ClipNote > Paste from Other Apps to Allow.
 
-## Features
+Turn monitoring off in ClipNote's settings under Clipboard Monitoring.
 
-In app settings, you can choose the action for launching from Camera Control from the following options:
+## CBNote features
 
-- Launch In-App Camera
-- Paste from Clipboard
-- Add New Note
-- Start Audio Recording
-- Open CBNote Only
-- Open Custom URL
-
-And other features:
-
-- Quick access to notes by launching from the Action Button, Camera Control, Control Center and other shortcut actions
-- Easily add new notes by pasting from the clipboard
-- Notes can be easily copied to the clipboard with a swipe gesture
-- Compatible with many file formats
+- Launch from Camera Control, the Action Button, Control Center or Shortcuts into the in-app camera, a paste from the clipboard, a new note, an audio recording or a custom URL
+- Notes are plain files on the device; many file formats are supported
+- Copy a note to the clipboard with a swipe
 
 ## License
 
-This application is licensed under the [MIT License](https://github.com/Cizzuk/CBNote/blob/main/LICENSE).
+CBNote is licensed under the [MIT License](LICENSE). Clip is released into the public domain under the [Unlicense](https://github.com/rileytestut/Clip/blob/main/UNLICENSE).

@@ -1,14 +1,12 @@
 //
 //  Constants.swift
-//  CBNote
+//  ClipNote
 //
 //  Created by Cizzuk on 2026/03/07.
 //
 
 import AVFoundation
 import Foundation
-
-let GroupUserDefaults = UserDefaults(suiteName: "group.net.cizzuk.cbnote")!
 
 extension Notification.Name {
     static let assistantDidActivate = Notification.Name("assistantDidActivate")

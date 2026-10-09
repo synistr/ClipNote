@@ -10,7 +10,7 @@ import AppIntents
 import SwiftUI
 
 struct OpenAppLaunchCameraIntent: AppIntent {
-    static let title: LocalizedStringResource = "Launch CBNote Camera"
+    static let title: LocalizedStringResource = "Launch ClipNote Camera"
     
     static var openAppWhenRun = true
     static var isDiscoverable = true

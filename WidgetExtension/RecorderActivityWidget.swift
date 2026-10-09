@@ -1,6 +1,6 @@
 //
 //  RecorderActivityWidget.swift
-//  CBNote Widget Extension
+//  ClipNote Widget Extension
 //
 //  Created by Cizzuk on 2026/03/03.
 //
@@ -11,7 +11,7 @@ import SwiftUI
 import WidgetKit
 
 struct RecorderActivityWidget: Widget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.RecorderActivityWidget"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.RecorderActivityWidget"
     
     struct IconImage: View {
         var size: CGFloat? = nil
@@ -22,7 +22,7 @@ struct RecorderActivityWidget: Widget {
                 .scaledToFit()
                 .frame(width: size, height: size)
                 .padding(3.5)
-                .accessibilityLabel("CBNote")
+                .accessibilityLabel("ClipNote")
                 .foregroundStyle(.white)
         }
     }
@@ -51,7 +51,7 @@ struct RecorderActivityWidget: Widget {
                     .bold()
                     .foregroundStyle(.white)
                 if showSubtitle {
-                    Text("CBNote")
+                    Text("ClipNote")
                         .font(.subheadline)
                         .foregroundStyle(.white.opacity(0.7))
                 }

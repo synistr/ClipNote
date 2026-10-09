@@ -22,7 +22,7 @@
         }
       }
     },
-    "CBNote" : {
+    "ClipNote" : {
       "shouldTranslate" : false
     },
     "Close Curtain" : {
@@ -87,12 +87,12 @@
         }
       }
     },
-    "Launch CBNote Camera" : {
+    "Launch ClipNote Camera" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CBNoteでカメラを起動"
+            "value" : "ClipNoteでカメラを起動"
           }
         }
       }
@@ -117,12 +117,12 @@
         }
       }
     },
-    "Open CBNote" : {
+    "Open ClipNote" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "CBNoteを開く"
+            "value" : "ClipNoteを開く"
           }
         }
       }

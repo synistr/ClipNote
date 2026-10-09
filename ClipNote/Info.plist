@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.fkeil.clipnote</string>
+				<string>clipnote</string>
+			</array>
+		</dict>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>camera</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_LaunchCamera</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.fkeil.clipnote.HomeShortcut.LaunchCamera</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>document.on.clipboard</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_PasteFromClipboard</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.fkeil.clipnote.HomeShortcut.PasteFromClipboard</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>square.and.pencil</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_AddNewNote</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.fkeil.clipnote.HomeShortcut.AddNewNote</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>waveform.badge.microphone</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UIApplicationShortcutItems_StartRecording</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.fkeil.clipnote.HomeShortcut.StartRecording</string>
+		</dict>
+	</array>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+</dict>
+</plist>

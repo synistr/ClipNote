@@ -1,6 +1,6 @@
 //
 //  FinishRecordButtonIntent.swift
-//  CBNote
+//  ClipNote
 //
 //  Created by Cizzuk on 2026/09/29.
 //

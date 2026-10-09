@@ -1,6 +1,6 @@
 //
 //  OpenAppControls.swift
-//  CBNote Widget Extension
+//  ClipNote Widget Extension
 //
 //  Created by Cizzuk on 2026/03/28.
 //
@@ -10,8 +10,8 @@ import AppIntents
 import SwiftUI
 
 struct OpenAppLaunchCameraControl: ControlWidget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.OpenAppLaunchCameraControl"
-    static let title: LocalizedStringResource = "Launch CBNote Camera"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.OpenAppLaunchCameraControl"
+    static let title: LocalizedStringResource = "Launch ClipNote Camera"
     
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: OpenAppLaunchCameraControl.kind) {
@@ -24,7 +24,7 @@ struct OpenAppLaunchCameraControl: ControlWidget {
 }
 
 struct OpenAppPasteFromClipboardControl: ControlWidget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.OpenAppPasteFromClipboardControl"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.OpenAppPasteFromClipboardControl"
     static let title: LocalizedStringResource = "Paste from Clipboard"
     
     var body: some ControlWidgetConfiguration {
@@ -38,7 +38,7 @@ struct OpenAppPasteFromClipboardControl: ControlWidget {
 }
 
 struct OpenAppAddNewNoteControl: ControlWidget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.OpenAppAddNewNoteControl"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.OpenAppAddNewNoteControl"
     static let title: LocalizedStringResource = "Add New Note"
     
     var body: some ControlWidgetConfiguration {
@@ -52,7 +52,7 @@ struct OpenAppAddNewNoteControl: ControlWidget {
 }
 
 struct OpenAppStartRecordingControl: ControlWidget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.OpenAppStartRecordingControl"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.OpenAppStartRecordingControl"
     static let title: LocalizedStringResource = "Start Recording"
     
     var body: some ControlWidgetConfiguration {
@@ -66,8 +66,8 @@ struct OpenAppStartRecordingControl: ControlWidget {
 }
 
 struct OpenAppOpenAppOnlyControl: ControlWidget {
-    static let kind = "net.cizzuk.cbnote.WidgetExtension.OpenAppOpenAppOnlyControl"
-    static let title: LocalizedStringResource = "Open CBNote"
+    static let kind = "com.fkeil.clipnote.WidgetExtension.OpenAppOpenAppOnlyControl"
+    static let title: LocalizedStringResource = "Open ClipNote"
     
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: OpenAppOpenAppOnlyControl.kind) {

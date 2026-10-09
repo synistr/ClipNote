@@ -1,6 +1,6 @@
 //
 //  CaptureExtension.swift
-//  CBNote Capture Extension
+//  ClipNote Capture Extension
 //
 //  Created by Cizzuk on 2025/11/30.
 //
@@ -32,7 +32,7 @@ struct ExtensionContentView: View {
                     Color.black
                         .ignoresSafeArea()
                         .task {
-                            let activity = NSUserActivity(activityType: "net.cizzuk.cbnote.CaptureExtension.runCameraControlAction")
+                            let activity = NSUserActivity(activityType: "com.fkeil.clipnote.CaptureExtension.runCameraControlAction")
                             try? await session.openApplication(for: activity)
                             exit(0)
                         }
@@ -44,7 +44,7 @@ struct ExtensionContentView: View {
                     Color.black
                         .ignoresSafeArea()
                         .task {
-                            let activity = NSUserActivity(activityType: "net.cizzuk.cbnote.CaptureExtension.openAppOnly")
+                            let activity = NSUserActivity(activityType: "com.fkeil.clipnote.CaptureExtension.openAppOnly")
                             try? await session.openApplication(for: activity)
                             exit(0)
                         }

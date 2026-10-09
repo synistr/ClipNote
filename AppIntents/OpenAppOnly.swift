@@ -10,7 +10,7 @@ import AppIntents
 import SwiftUI
 
 struct OpenAppOpenAppOnlyIntent: AppIntent {
-    static let title: LocalizedStringResource = "Open CBNote"
+    static let title: LocalizedStringResource = "Open ClipNote"
     
     static var openAppWhenRun = true
     static var isDiscoverable = true
