@@ -1,7 +1,4 @@
 {
-  "features" : [
-    "specular-location"
-  ],
   "fill" : "automatic",
   "groups" : [
     {
@@ -46,7 +43,7 @@
         "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : "inside",
+      "specular" : true,
       "translucency" : {
         "enabled" : true,
         "value" : 0.2
@@ -75,7 +72,7 @@
         "kind" : "neutral",
         "opacity" : 0.5
       },
-      "specular" : "inside",
+      "specular" : true,
       "translucency" : {
         "enabled" : true,
         "value" : 0.25
