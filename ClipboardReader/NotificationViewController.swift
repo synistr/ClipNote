@@ -39,8 +39,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         let identifier = notification.request.identifier
 
         Task {
-            // Let the expanded notification draw first: reading the clipboard can block the main thread,
-            // and before the first frame that leaves the notification blank. Clip also reads it later.
+            // Let the expanded notification draw first, since reading the clipboard can block the main thread
             try? await Task.sleep(for: .milliseconds(300))
 
             // Read through item providers on the main thread, like Clip
