@@ -81,4 +81,73 @@ struct ClipboardContent: Codable {
 
         return contents
     }
+
+    // Loads only the representations a note needs, like Clip does. Reading UIPasteboard.items instead
+    // makes the source app hand over every representation of every item first, which can take so long
+    // that the notification extension never gets to save.
+    static func load(from itemProviders: [NSItemProvider]) async -> [ClipboardContent] {
+        var contents: [ClipboardContent] = []
+        for provider in itemProviders {
+            if let content = await load(from: provider) {
+                contents.append(content)
+            }
+        }
+        return contents
+    }
+
+    private static func load(from provider: NSItemProvider) async -> ClipboardContent? {
+        // 1. Text -> .txt
+        let textTypes = [UTType.utf8PlainText, UTType.plainText, UTType.text]
+        if textTypes.contains(where: { provider.hasItemConformingToTypeIdentifier($0.identifier) }),
+           provider.canLoadObject(ofClass: String.self),
+           let text = await loadText(from: provider) {
+            return ClipboardContent(fileExtension: "txt", data: Data(text.utf8))
+        }
+
+        // 2. URL: web links -> .txt, files are copied
+        if provider.hasItemConformingToTypeIdentifier(UTType.url.identifier),
+           provider.canLoadObject(ofClass: URL.self),
+           let url = await loadURL(from: provider) {
+            if !url.isFileURL {
+                return ClipboardContent(fileExtension: "txt", data: Data(url.absoluteString.utf8))
+            }
+            if let fileData = try? Data(contentsOf: url) {
+                return ClipboardContent(fileExtension: url.pathExtension, data: fileData)
+            }
+        }
+
+        // 3. Anything else (images etc.): the highest fidelity type that has a file extension
+        for typeIdentifier in provider.registeredTypeIdentifiers {
+            guard let fileExtension = UTType(typeIdentifier)?.preferredFilenameExtension,
+                  let data = await loadData(typeIdentifier, from: provider)
+            else { continue }
+            return ClipboardContent(fileExtension: fileExtension, data: data)
+        }
+
+        return nil
+    }
+
+    private static func loadText(from provider: NSItemProvider) async -> String? {
+        await withCheckedContinuation { continuation in
+            _ = provider.loadObject(ofClass: String.self) { text, _ in
+                continuation.resume(returning: text)
+            }
+        }
+    }
+
+    private static func loadURL(from provider: NSItemProvider) async -> URL? {
+        await withCheckedContinuation { continuation in
+            _ = provider.loadObject(ofClass: URL.self) { url, _ in
+                continuation.resume(returning: url)
+            }
+        }
+    }
+
+    private static func loadData(_ typeIdentifier: String, from provider: NSItemProvider) async -> Data? {
+        await withCheckedContinuation { continuation in
+            _ = provider.loadDataRepresentation(forTypeIdentifier: typeIdentifier) { data, _ in
+                continuation.resume(returning: data)
+            }
+        }
+    }
 }

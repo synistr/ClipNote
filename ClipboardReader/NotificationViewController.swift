@@ -12,28 +12,35 @@ import UserNotificationsUI
 // Saves the clipboard when the "Clipboard Changed" notification is expanded.
 // The app can't read the clipboard from the background, but an expanded notification can.
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
-    private let activityIndicator = UIActivityIndicatorView(style: .medium)
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
+
+        let label = UILabel()
+        label.text = String(localized: "Saving to ClipNote…")
+        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.textColor = .secondaryLabel
+
+        let stack = UIStackView(arrangedSubviews: [activityIndicator, label])
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
         NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 
     func didReceive(_ notification: UNNotification) {
         let identifier = notification.request.identifier
 
-        Task {
-            let contents = await Task.detached(priority: .userInitiated) {
-                ClipboardContent.read(from: UIPasteboard.general)
-            }.value
+        // Read the clipboard on the main thread through item providers, like Clip
+        let itemProviders = UIPasteboard.general.itemProviders
 
+        Task {
+            let contents = await ClipboardContent.load(from: itemProviders)
             finish(saving: contents, notificationIdentifier: identifier)
         }
     }
