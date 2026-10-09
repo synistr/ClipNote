@@ -12,6 +12,8 @@ import UserNotificationsUI
 // Saves the clipboard when the "Clipboard Changed" notification is expanded.
 // The app can't read the clipboard from the background, but an expanded notification can.
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
+    private var isFinished = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,16 +38,29 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     func didReceive(_ notification: UNNotification) {
         let identifier = notification.request.identifier
 
-        // Read the clipboard on the main thread through item providers, like Clip
-        let itemProviders = UIPasteboard.general.itemProviders
+        Task {
+            // Let the expanded notification draw first: reading the clipboard can block the main thread,
+            // and before the first frame that leaves the notification blank. Clip also reads it later.
+            try? await Task.sleep(for: .milliseconds(300))
+
+            // Read through item providers on the main thread, like Clip
+            let contents = await ClipboardContent.load(from: UIPasteboard.general.itemProviders)
+            finish(saving: contents, notificationIdentifier: identifier)
+        }
 
         Task {
-            let contents = await ClipboardContent.load(from: itemProviders)
-            finish(saving: contents, notificationIdentifier: identifier)
+            // If reading the clipboard stalls, open ClipNote, which saves it instead
+            try? await Task.sleep(for: .seconds(6))
+            guard !isFinished else { return }
+            isFinished = true
+            extensionContext?.performNotificationDefaultAction()
         }
     }
 
     private func finish(saving contents: [ClipboardContent], notificationIdentifier: String) {
+        guard !isFinished else { return }
+        isFinished = true
+
         guard !contents.isEmpty else {
             // Can't dismiss the extension before reading the clipboard, so only now
             extensionContext?.dismissNotificationContentExtension()
