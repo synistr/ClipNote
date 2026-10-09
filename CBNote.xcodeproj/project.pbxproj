@@ -14,7 +14,6 @@
 		BE3285E52F776D7A00D66CCB /* OpenAppOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3285B92F776D7A00D66CCB /* OpenAppOption.swift */; };
 		BE3286082F776D7A00D66CCB /* OpenAppOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3285B92F776D7A00D66CCB /* OpenAppOption.swift */; };
 		BE994B642EDC522A008053C1 /* CBNote Capture Extension.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = BE994B5B2EDC522A008053C1 /* CBNote Capture Extension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		BEAF98732EE546A300488245 /* CBNote Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BEAF98692EE546A100488245 /* CBNote Watch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BEC15B1A2F3893AB002B7B82 /* TemporaryScreenCurtain in Frameworks */ = {isa = PBXBuildFile; productRef = BEC15B192F3893AB002B7B82 /* TemporaryScreenCurtain */; };
 		BEE666E02F5C67C2008C8134 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE666DE2F5C67C1008C8134 /* Constants.swift */; };
 		BEE666E12F5C67C2008C8134 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE666DE2F5C67C1008C8134 /* Constants.swift */; };
@@ -34,13 +33,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = BE994B5A2EDC522A008053C1;
 			remoteInfo = CaptureExtension;
-		};
-		BEAF98712EE546A300488245 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE88546F2EDB01F20040399C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BEAF98682EE546A100488245;
-			remoteInfo = "CBNoteWatch Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -67,17 +59,6 @@
 			name = "Embed ExtensionKit Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BEAF98772EE546A300488245 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				BEAF98732EE546A300488245 /* CBNote Watch.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +68,6 @@
 		BE5E92182EE1278500C2241E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		BE8854772EDB01F20040399C /* CBNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE994B5B2EDC522A008053C1 /* CBNote Capture Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "CBNote Capture Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEAF98692EE546A100488245 /* CBNote Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CBNote Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE666DE2F5C67C1008C8134 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,14 +120,6 @@
 			);
 			target = BE994B5A2EDC522A008053C1 /* CBNote Capture Extension */;
 		};
-		BEFA7AE92EE55FCB0023643B /* Exceptions for "CBNote" folder in "CBNote Watch" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Models/Helpers/FileTypes.swift,
-				Models/Watch/WatchConnectivitySupport.swift,
-			);
-			target = BEAF98682EE546A100488245 /* CBNote Watch */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -173,7 +145,6 @@
 				BE0BF7E32EDC3CEA00E228F0 /* Exceptions for "CBNote" folder in "CBNote" target */,
 				BEF0D9AB2EDFDB900059DFA3 /* Exceptions for "CBNote" folder in "CBNote Capture Extension" target */,
 				BE49CBE82EE6618E0058D021 /* Exceptions for "CBNote" folder in "CBNote Widget Extension" target */,
-				BEFA7AE92EE55FCB0023643B /* Exceptions for "CBNote" folder in "CBNote Watch" target */,
 			);
 			path = CBNote;
 			sourceTree = "<group>";
@@ -184,11 +155,6 @@
 				BE994B692EDC522A008053C1 /* Exceptions for "CaptureExtension" folder in "CBNote Capture Extension" target */,
 			);
 			path = CaptureExtension;
-			sourceTree = "<group>";
-		};
-		BEAF986A2EE546A100488245 /* CBNote Watch App */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "CBNote Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -218,13 +184,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BEAF98662EE546A100488245 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -246,7 +205,6 @@
 				BE8854792EDB01F20040399C /* CBNote */,
 				BE994B5C2EDC522A008053C1 /* CaptureExtension */,
 				BE2DD7ED2EE25FEC00F13CF0 /* WidgetExtension */,
-				BEAF986A2EE546A100488245 /* CBNote Watch App */,
 				BE5E92152EE1278500C2241E /* Frameworks */,
 				BE8854782EDB01F20040399C /* Products */,
 			);
@@ -258,7 +216,6 @@
 				BE8854772EDB01F20040399C /* CBNote.app */,
 				BE994B5B2EDC522A008053C1 /* CBNote Capture Extension.appex */,
 				BE2DD7EA2EE25FEC00F13CF0 /* CBNote Widget Extension.appex */,
-				BEAF98692EE546A100488245 /* CBNote Watch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,14 +255,12 @@
 				BE8854752EDB01F20040399C /* Resources */,
 				BE994B652EDC522A008053C1 /* Embed ExtensionKit Extensions */,
 				BE5E922B2EE1278600C2241E /* Embed Foundation Extensions */,
-				BEAF98772EE546A300488245 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				BE994B632EDC522A008053C1 /* PBXTargetDependency */,
 				BE2DD7F82EE25FED00F13CF0 /* PBXTargetDependency */,
-				BEAF98722EE546A300488245 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				BE0BD3D22F7763DB0056E6BC /* AppIntents */,
@@ -341,28 +296,6 @@
 			productReference = BE994B5B2EDC522A008053C1 /* CBNote Capture Extension.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
-		BEAF98682EE546A100488245 /* CBNote Watch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BEAF98742EE546A300488245 /* Build configuration list for PBXNativeTarget "CBNote Watch" */;
-			buildPhases = (
-				BEAF98652EE546A100488245 /* Sources */,
-				BEAF98662EE546A100488245 /* Frameworks */,
-				BEAF98672EE546A100488245 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BEAF986A2EE546A100488245 /* CBNote Watch App */,
-			);
-			name = "CBNote Watch";
-			packageProductDependencies = (
-			);
-			productName = "CBNoteWatch Watch App";
-			productReference = BEAF98692EE546A100488245 /* CBNote Watch.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -380,9 +313,6 @@
 						CreatedOnToolsVersion = 26.1.1;
 					};
 					BE994B5A2EDC522A008053C1 = {
-						CreatedOnToolsVersion = 26.1.1;
-					};
-					BEAF98682EE546A100488245 = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
 				};
@@ -408,7 +338,6 @@
 				BE8854762EDB01F20040399C /* CBNote */,
 				BE994B5A2EDC522A008053C1 /* CBNote Capture Extension */,
 				BE2DD7E92EE25FEC00F13CF0 /* CBNote Widget Extension */,
-				BEAF98682EE546A100488245 /* CBNote Watch */,
 			);
 		};
 /* End PBXProject section */
@@ -429,13 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BE994B592EDC522A008053C1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BEAF98672EE546A100488245 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -471,13 +393,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BEAF98652EE546A100488245 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -492,12 +407,6 @@
 			platformFilter = ios;
 			target = BE994B5A2EDC522A008053C1 /* CBNote Capture Extension */;
 			targetProxy = BE994B622EDC522A008053C1 /* PBXContainerItemProxy */;
-		};
-		BEAF98722EE546A300488245 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = BEAF98682EE546A100488245 /* CBNote Watch */;
-			targetProxy = BEAF98712EE546A300488245 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -891,72 +800,6 @@
 			};
 			name = Release;
 		};
-		BEAF98752EE546A300488245 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 56;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CBNote;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.cizzuk.cbnote;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.8;
-				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.cbnote.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.1;
-			};
-			name = Debug;
-		};
-		BEAF98762EE546A300488245 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 56;
-				DEVELOPMENT_TEAM = Z8R89S24YT;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = CBNote;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = net.cizzuk.cbnote;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 2.8;
-				PRODUCT_BUNDLE_IDENTIFIER = net.cizzuk.cbnote.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -992,15 +835,6 @@
 			buildConfigurations = (
 				BE994B662EDC522A008053C1 /* Debug */,
 				BE994B672EDC522A008053C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BEAF98742EE546A300488245 /* Build configuration list for PBXNativeTarget "CBNote Watch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BEAF98752EE546A300488245 /* Debug */,
-				BEAF98762EE546A300488245 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

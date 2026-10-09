@@ -49,8 +49,6 @@ struct CBNote: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
-        // Initialize Watch Connectivity Manager
-        _ = WatchConnectivityManager.shared
         // Update Capture Context
         CaptureContext.syncContextSettings()
     }
