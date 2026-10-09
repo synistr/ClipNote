@@ -101,6 +101,10 @@ struct MainView: View {
                 .onReceive(NotificationCenter.default.publisher(for: .clipboardNotificationOpened)) { _ in
                     vm.saveClipboardFromNotification()
                 }
+                // Clipboard saved from the expanded "Clipboard Changed" notification
+                .onReceive(NotificationCenter.default.publisher(for: .clipboardInboxDidChange)) { _ in
+                    vm.importClipboardInbox()
+                }
                 // Keyboard Shortcuts
                 .onReceive(NotificationCenter.default.publisher(for: .customKeyboardShortcutPerformed)) { action in
                     if let shortcut = action.object as? CustomKeyboardShortcut {

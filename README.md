@@ -4,10 +4,11 @@ A note app that watches your clipboard. Based on [CBNote](https://github.com/Ciz
 
 ## Clipboard monitoring
 
-ClipNote keeps running in the background and posts a notification whenever the clipboard changes. Tapping the notification opens ClipNote and saves the clipboard as a new note.
+ClipNote keeps running in the background and posts a notification whenever the clipboard changes. Swipe the notification down to save the clipboard as a new note without leaving the app you're in, or tap it to open ClipNote and save it there.
 
 - Background location updates (approximate, never stored) keep the app alive. Grant location access "Always".
 - A private Pasteboard API delivers clipboard change events while the app is in the background, so this can't ship on the App Store.
+- Swiping down opens the Clipboard Reader notification extension, which reads the clipboard and hands it to the app through a shared keychain access group (in place of Clip's App Group).
 - If iOS suspends or kills ClipNote, an "App Stopped Running" notification asks you to reopen it.
 - To skip the paste prompt on every save, set Settings > ClipNote > Paste from Other Apps to Allow.
 

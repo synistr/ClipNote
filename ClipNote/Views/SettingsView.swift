@@ -42,7 +42,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Clipboard Monitoring")
                 } footer: {
-                    Text("ClipNote keeps running in the background and shows a notification whenever you copy something. Tap the notification to save the clipboard as a note. Background location updates keep the app running; your location is never saved.")
+                    Text("ClipNote keeps running in the background and shows a notification whenever you copy something. Swipe the notification down to save the clipboard as a note. Background location updates keep the app running; your location is never saved.")
                 }
                 
                 Section {

@@ -12,12 +12,17 @@ import UserNotifications
 
 extension Notification.Name {
     static let clipboardNotificationOpened = Notification.Name("clipboardNotificationOpened")
+    static let clipboardInboxDidChange = Notification.Name("clipboardInboxDidChange")
 }
 
 // Watches the clipboard while ClipNote runs in the background, and posts a notification
-// whenever it changes. Tapping the notification saves the clipboard as a new note.
+// whenever it changes. Swiping the notification down saves the clipboard through the
+// Clipboard Reader extension, tapping it opens ClipNote and saves it there.
 class ClipboardMonitorService: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     static let shared = ClipboardMonitorService()
+
+    // Must match UNNotificationExtensionCategory in ClipboardReader/Info.plist
+    static let clipboardCategory = "ClipboardChanged"
 
     private enum NotificationID {
         static let clipboardChanged = "ClipboardChanged"
@@ -38,9 +43,24 @@ class ClipboardMonitorService: NSObject, ObservableObject, UNUserNotificationCen
     func configure() {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
+        // The Clipboard Reader extension only shows up for registered categories
+        center.setNotificationCategories([
+            UNNotificationCategory(identifier: Self.clipboardCategory, actions: [], intentIdentifiers: [])
+        ])
         // Clear the "App Stopped Running" notification from a previous launch
         center.removePendingNotificationRequests(withIdentifiers: [NotificationID.appStoppedRunning])
         center.removeDeliveredNotifications(withIdentifiers: [NotificationID.appStoppedRunning])
+
+        // Clipboards saved by the Clipboard Reader extension
+        CFNotificationCenterAddObserver(
+            CFNotificationCenterGetDarwinNotifyCenter(), nil,
+            { _, _, _, _, _ in
+                Task { @MainActor in
+                    ClipboardMonitorService.shared.clipboardInboxDidChange()
+                }
+            },
+            ClipboardInbox.didAddNotification as CFString, nil, .deliverImmediately
+        )
 
         if UserSettings.shared.monitorClipboard {
             start()
@@ -118,8 +138,9 @@ class ClipboardMonitorService: NSObject, ObservableObject, UNUserNotificationCen
         }
 
         let content = UNMutableNotificationContent()
+        content.categoryIdentifier = Self.clipboardCategory
         content.title = String(localized: "Clipboard Changed")
-        content.body = String(localized: "Tap to save it as a note.")
+        content.body = String(localized: "Swipe down to save it as a note.")
 
         let request = UNNotificationRequest(identifier: NotificationID.clipboardChanged, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request) { error in
@@ -127,6 +148,11 @@ class ClipboardMonitorService: NSObject, ObservableObject, UNUserNotificationCen
                 print("Failed to post clipboard notification: \(error)")
             }
         }
+    }
+
+    private func clipboardInboxDidChange() {
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [NotificationID.clipboardChanged])
+        NotificationCenter.default.post(name: .clipboardInboxDidChange, object: nil)
     }
 
     // MARK: - App Stopped Running

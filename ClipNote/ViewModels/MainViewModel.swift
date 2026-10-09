@@ -128,6 +128,7 @@ class MainViewModel: ObservableObject {
     
     func onAppear() {
         noteManager.importLockedCameraCaptures()
+        importClipboardInbox()
         checkAutoPaste()
         loadFiles()
     }
@@ -135,6 +136,7 @@ class MainViewModel: ObservableObject {
     func onChange(scenePhase: ScenePhase) {
         switch scenePhase {
         case .active:
+            importClipboardInbox()
             checkAutoPaste()
             refreshFiles()
             
@@ -214,6 +216,18 @@ class MainViewModel: ObservableObject {
               lastPasteboardChangeCount != UIPasteboard.general.changeCount
         else { return }
         addAndPaste()
+    }
+    
+    // Saves clipboards handed over by the Clipboard Reader extension
+    func importClipboardInbox() {
+        let contents = ClipboardInbox.takeAll()
+        guard !contents.isEmpty,
+              let url = ClipboardSupport.saveNotes(contents, noteManager: noteManager)
+        else { return }
+        
+        lastPasteboardChangeCount = UIPasteboard.general.changeCount
+        noteManager.loadFiles()
+        newFileURLToScroll = url
     }
     
     func copyFile(at url: URL) {
